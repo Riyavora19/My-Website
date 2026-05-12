@@ -1,0 +1,32 @@
+.timeline {
+  display: flex;
+  gap: 6px;
+}
+
+/* Base style */
+.timeline-step {
+  padding: 5px 10px;
+  border-radius: 14px;
+  font-size: 18px;
+  font-weight: 600;
+  background: #eee;
+  color: #777;
+  transition: 0.3s;
+}
+
+/* Active colors */
+
+.pending.active {
+  background: #f3e2b8;
+  color: #9a6b00;
+}
+
+.in-progress.active {
+  background: #c7d8ec;
+  color: #0d4a8c;
+}
+
+.resolved.active {
+  background: #cfe4d4;
+  color: #1e6b3a;
+}

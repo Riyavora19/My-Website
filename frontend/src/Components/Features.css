@@ -1,0 +1,103 @@
+.features-page {
+  background: #f5f7fb;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+}
+
+/* Hero */
+.features-hero {
+  background: linear-gradient(135deg, #4a90e2, #6c63ff);
+  color: white;
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.features-hero h1 {
+  font-size: 36px;
+}
+
+.features-hero p {
+  margin-top: 8px;
+  font-size: 18px;
+  opacity: 0.9;
+}
+
+/* Grid Container */
+.features-container {
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 0 20px;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+/* Card */
+.feature-card {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  transition: 0.3s;
+}
+
+.feature-card:hover {
+  transform: translateY(-6px);
+}
+
+/* Icon */
+.feature-icon {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+/* Text */
+.feature-card h3 {
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.feature-card p {
+  color: #666;
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+/* Button */
+.feature-card button {
+  background: #4a90e2;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.feature-card button:hover {
+  background: #357abd;
+}
+
+/* Footer */
+.features-footer {
+  background: #1f2937;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  margin-top: 40px;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .features-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 500px) {
+  .features-container {
+    grid-template-columns: 1fr;
+  }
+}

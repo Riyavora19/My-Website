@@ -1,0 +1,54 @@
+.track-page {
+  padding: 40px;
+  background: #f4f6f9;
+  min-height: 100vh;
+}
+
+.track-page h2 {
+  margin-bottom: 20px;
+}
+
+/* Table */
+.issue-table {
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.table-header,
+.table-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1.5fr;
+  padding: 15px 20px;
+  align-items: center;
+}
+
+
+.table-header {
+  background: #2c3e50;
+  color: #fff;
+  font-weight: 600;
+}
+
+.table-row {
+  border-bottom: 1px solid #eee;
+}
+
+.table-row:hover {
+  background: #f9f9f9;
+}
+
+.badge.pending {
+  background: #facc15;
+}
+
+.badge.in\ progress {
+  background: #60a5fa;
+  color: white;
+}
+
+.badge.resolved {
+  background: #22c55e;
+  color: white;
+}

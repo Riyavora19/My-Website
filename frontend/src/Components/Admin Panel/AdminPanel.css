@@ -1,0 +1,273 @@
+body {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  background: #f5f6fa;
+}
+
+/* Layout */
+.admin-container {
+  display: flex;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 240px;
+  height: 100vh;
+  background: #1e293b;
+  color: white;
+  padding: 20px;
+}
+
+.logo {
+  margin-bottom: 30px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  padding: 12px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.sidebar li:hover {
+  background: #334155;
+}
+
+.sidebar .active {
+  background: #3b82f6;
+}
+
+/* Main */
+.main-content {
+  flex: 1;
+  padding: 20px;
+}
+
+/* Topbar */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  padding: 15px 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.admin-info {
+  font-weight: bold;
+}
+
+/* Cards */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.card h3 {
+  font-size: 28px;
+  margin: 0;
+}
+
+.card p {
+  color: gray;
+}
+
+.card.success {
+  border-left: 5px solid green;
+}
+
+.card.warning {
+  border-left: 5px solid orange;
+}
+
+/* Table */
+.table {
+  width: 100%;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  border-collapse: collapse;
+}
+
+.table th, .table td {
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+}
+
+.table th {
+  background: #f1f5f9;
+  text-align: left;
+}
+
+/* Buttons */
+.btn {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.btn.resolve {
+  background: #3b82f6;
+  color: white;
+}
+
+.btn.done {
+  background: gray;
+  color: white;
+}
+
+/* Badges */
+.badge {
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+}
+
+.badge.pending {
+  background: #facc15;
+  color: black;
+}
+
+.badge.done {
+  background: #22c55e;
+  color: white;
+}
+
+/* FIX ACTION COLUMN */
+.action-cell {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+/* COMMON BUTTON */
+.btn {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+/* BUTTON COLORS */
+.btn.view {
+  background: #3b82f6;
+  color: white;
+}
+
+.btn.edit {
+  background: #f59e0b;
+  color: white;
+}
+
+.btn.delete {
+  background: #ef4444;
+  color: white;
+}
+
+/* HOVER */
+.btn:hover {
+  opacity: 0.9;
+}
+
+/* ALIGN TABLE */
+.table td {
+  vertical-align: middle;
+}
+
+/* ================= MODAL FIX ================= */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background: rgba(0, 0, 0, 0.5);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 9999; /* 🔥 ensures it stays above everything */
+}
+
+.modal-box {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 320px;
+
+  z-index: 10000;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* INPUT FIX */
+.modal-box input {
+  width: 100%;
+  margin: 8px 0;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+/* MODAL BUTTON SPACING */
+.modal-box button {
+  margin-top: 10px;
+  margin-right: 5px;
+}
+
+/* MODAL TITLE */
+.modal-title {
+  margin-bottom: 10px;
+}
+
+/* BODY */
+.modal-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* INPUT */
+.modal-box input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+/* FOOTER */
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+/* BUTTON COLORS */
+.btn.update {
+  background: #22c55e;
+  color: white;
+}
+
+.btn.cancel {
+  background: #e5e7eb;
+}

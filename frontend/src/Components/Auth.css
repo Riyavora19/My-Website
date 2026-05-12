@@ -1,0 +1,101 @@
+.auth-container {
+  display: flex;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+}
+
+/* Blue Section - 30% */
+.auth-left {
+  flex: 0.3;
+  background: linear-gradient(135deg, #4a90e2, #6c63ff);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px;
+}
+
+/* Login Section - 70% */
+.auth-right {
+  flex: 0.7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f5f7fb;
+}
+
+.auth-left h1 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.auth-left p {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/* Right Panel */
+
+/* Login Box */
+.auth-box {
+  background: white;
+  padding: 45px;
+  width: 450px;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+  text-align: center;
+}
+
+.auth-box h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Inputs */
+
+
+.auth-box input,
+.auth-box select {
+  width: 100%;
+  padding: 12px 14px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  box-sizing: border-box;
+  background-color: #fff;
+}
+
+/* Button */
+.auth-btn {
+  width: 100%;
+  padding: 14px;
+  font-size: 16px;
+}
+
+.auth-btn:hover {
+  background: #357abd;
+}
+
+/* Footer */
+.auth-footer {
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.auth-footer span {
+  color: #4a90e2;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .auth-left {
+    display: none;
+  }
+
+  .auth-container {
+    justify-content: center;
+  }
+}
