@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import Home from "./Components/Home";
 import Login from "./Components/Login";
 import Register from "./Components/Register";
@@ -12,29 +12,39 @@ import Contact from "./Components/Contact";
 import Profile from "./Components/Profile";
 import AdminPanel from "./Components/Admin Panel/AdminPanel";
 
+const ProtectedRoute = ({ children }) => {
+  const user = JSON.parse(localStorage.getItem("user"));
+  if (!user) return <Navigate to="/login" replace />;
+  return children;
+};
+
+// Only show main Navbar on non-admin pages
+const ConditionalNavbar = () => {
+  const location = useLocation();
+  if (location.pathname.startsWith("/admin")) return null;
+  return <Navbar />;
+};
+
 function App() {
   return (
     <BrowserRouter>
-
-     <Navbar/> 
-
+      <ConditionalNavbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-         <Route path="/raise-issue" element={<RaiseIssue />} />
-         <Route path="/track-status" element={<TrackStatus />} />
-         <Route path="/submit-feedback" element={<SubmitFeedback />} />
-         <Route path="/features" element={<Features/>}/>
-         <Route path="/about" element={<About />} />
-         <Route path="/contact" element={<Contact />} />
-         <Route path="/profile" element={<Profile />} />
-         <Route path="/admin" element={<AdminPanel />} />
+        <Route path="/raise-issue"     element={<ProtectedRoute><RaiseIssue /></ProtectedRoute>} />
+        <Route path="/track-status"    element={<ProtectedRoute><TrackStatus /></ProtectedRoute>} />
+        <Route path="/submit-feedback" element={<ProtectedRoute><SubmitFeedback /></ProtectedRoute>} />
+        <Route path="/features"        element={<ProtectedRoute><Features /></ProtectedRoute>} />
+        <Route path="/about"           element={<ProtectedRoute><About /></ProtectedRoute>} />
+        <Route path="/contact"         element={<ProtectedRoute><Contact /></ProtectedRoute>} />
+        <Route path="/profile"         element={<ProtectedRoute><Profile /></ProtectedRoute>} />
+        <Route path="/admin"           element={<ProtectedRoute><AdminPanel /></ProtectedRoute>} />
+        <Route path="*"                element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>
   );
 }
 
 export default App;
-
-

@@ -28,7 +28,9 @@ const createFeedback = async (req, res) => {
 // GET ALL FEEDBACK
 const getFeedbacks = async (req, res) => {
   try {
-    const feedbacks = await Feedback.find().populate("user", "fullName email");
+    const feedbacks = await Feedback.find()
+      .populate("user", "fullName email")
+      .sort({ createdAt: -1 }); // newest first
     res.json(feedbacks);
   } catch (error) {
     res.status(500).json({ message: error.message });

@@ -1,22 +1,29 @@
 .feedback-page {
   min-height: 100vh;
-  background: #f4f6f9;
+  background: #f0f4ff;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 40px 20px;
 }
 
 .feedback-card {
-  width: 420px;
-  background: #fff;
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  width: 460px;
+  max-width: 100%;
+  background: #ffffff;
+  padding: 32px;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(79, 70, 229, 0.10);
+  border: 1px solid #e0e7ff;
 }
 
 .feedback-card h2 {
-  margin-bottom: 20px;
+  margin-bottom: 22px;
   text-align: center;
+  color: #0f172a;
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.3px;
 }
 
 /* Form inputs */
@@ -24,11 +31,25 @@
 .feedback-card select,
 .feedback-card textarea {
   width: 100%;
-  padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #ddd;
-  border-radius: 6px;
+  padding: 11px 14px;
+  margin-bottom: 14px;
+  border: 1.5px solid #e0e7ff;
+  border-radius: 10px;
   font-size: 14px;
+  background: #f8faff;
+  color: #1e293b;
+  outline: none;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+  font-family: 'Inter', Arial, sans-serif;
+}
+
+.feedback-card input:focus,
+.feedback-card select:focus,
+.feedback-card textarea:focus {
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+  background: #ffffff;
 }
 
 .feedback-card textarea {
@@ -38,26 +59,126 @@
 /* Button */
 .feedback-card button {
   width: 100%;
-  padding: 12px;
-  background: #2c3e50;
-  color: #fff;
+  padding: 13px;
+  background: linear-gradient(135deg, #4f46e5, #7c3aed);
+  color: #ffffff;
   border: none;
-  border-radius: 6px;
+  border-radius: 10px;
   font-size: 15px;
+  font-weight: 600;
   cursor: pointer;
-  transition: 0.2s;
+  box-shadow: 0 4px 14px rgba(79, 70, 229, 0.3);
+  transition: all 0.2s ease;
+  font-family: 'Inter', Arial, sans-serif;
 }
 
 .feedback-card button:hover {
-  background: #1a252f;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(79, 70, 229, 0.4);
 }
 
 /* Success message */
 .success-msg {
-  background: #d4edda;
-  color: #155724;
-  padding: 10px;
-  border-radius: 6px;
+  background: #dcfce7;
+  color: #166534;
+  padding: 11px 14px;
+  border-radius: 10px;
   margin-bottom: 15px;
   text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+  border: 1px solid #bbf7d0;
+}
+
+/* ===== FEEDBACK HISTORY ===== */
+.feedback-history {
+  margin-top: 28px;
+  border-top: 1px solid #e0e7ff;
+  padding-top: 20px;
+}
+
+.feedback-history h4 {
+  font-size: 11px;
+  font-weight: 700;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  margin-bottom: 14px;
+}
+
+.feedback-history-item {
+  background: #f8faff;
+  border: 1px solid #e0e7ff;
+  border-radius: 10px;
+  padding: 14px 16px;
+  margin-bottom: 10px;
+  transition: all 0.2s ease;
+}
+
+.feedback-history-item:hover {
+  border-color: #c7d2fe;
+  box-shadow: 0 2px 8px rgba(79, 70, 229, 0.08);
+}
+
+.feedback-history-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.feedback-history-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.feedback-history-dept {
+  font-size: 12px;
+  background: #eef2ff;
+  color: #4f46e5;
+  padding: 2px 10px;
+  border-radius: 50px;
+  font-weight: 500;
+}
+
+.feedback-history-item p {
+  font-size: 13px;
+  color: #64748b;
+  margin: 0 0 8px;
+  line-height: 1.5;
+}
+
+.feedback-history-rating {
+  font-size: 12px;
+  font-weight: 600;
+  color: #94a3b8;
+}
+
+.feedback-card-header {
+  position: relative;
+}
+
+.feedback-close-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f8faff;
+  border: 1px solid #e0e7ff;
+  border-radius: 50%;
+  font-size: 18px;
+  cursor: pointer;
+  color: #64748b;
+  transition: all 0.2s ease;
+  line-height: 1;
+}
+
+.feedback-close-btn:hover {
+  background: #e0e7ff;
+  color: #0f172a;
 }

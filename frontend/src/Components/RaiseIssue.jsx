@@ -12,8 +12,13 @@ const RaiseIssue = ({ onClose }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // No need to send user ID — backend reads it from JWT token
-      await API.post("/issues", formData);
+      const res = await API.post("/issues", formData);
+
+      // Cache this issue in localStorage immediately
+      const existing = JSON.parse(localStorage.getItem("my_issues") || "[]");
+      const updated = [res.data, ...existing];
+      localStorage.setItem("my_issues", JSON.stringify(updated));
+
       alert("Issue submitted successfully!");
       setFormData({ title: "", description: "", category: "", department: "", priority: "Low" });
       if (onClose) onClose();

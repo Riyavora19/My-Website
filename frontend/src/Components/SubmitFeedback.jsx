@@ -2,7 +2,9 @@ import { useState } from "react";
 import "./SubmitFeedback.css";
 import API from "../api/axios";
 
-const SubmitFeedback = () => {
+const CACHE_KEY = "my_feedback";
+
+const SubmitFeedback = ({ onClose }) => {
   const [formData, setFormData] = useState({ title: "", category: "", department: "", message: "", rating: "" });
   const [submitted, setSubmitted] = useState(false);
 
@@ -11,8 +13,13 @@ const SubmitFeedback = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // No need to send user ID — backend reads it from JWT token
-      await API.post("/feedback", formData);
+      const res = await API.post("/feedback", formData);
+
+      // Cache this feedback in localStorage
+      const existing = JSON.parse(localStorage.getItem(CACHE_KEY) || "[]");
+      const updated = [res.data, ...existing];
+      localStorage.setItem(CACHE_KEY, JSON.stringify(updated));
+
       setSubmitted(true);
       setFormData({ title: "", category: "", department: "", message: "", rating: "" });
     } catch (error) {
@@ -20,12 +27,16 @@ const SubmitFeedback = () => {
     }
   };
 
+  // Load cached feedback to show history
+  const cachedFeedback = JSON.parse(localStorage.getItem(CACHE_KEY) || "[]");
+
   return (
     <div className="feedback-page">
       <div className="feedback-card">
         <div className="feedback-card-header">
           <h2>💬 Submit Feedback</h2>
           <p>Help us improve university services with your feedback</p>
+          {onClose && <span className="feedback-close-btn" onClick={onClose}>×</span>}
         </div>
 
         {submitted && <div className="success-msg">✅ Feedback submitted successfully! Thank you.</div>}
@@ -72,6 +83,23 @@ const SubmitFeedback = () => {
 
           <button type="submit">Submit Feedback</button>
         </form>
+
+        {/* Show previously submitted feedback from cache */}
+        {cachedFeedback.length > 0 && (
+          <div className="feedback-history">
+            <h4>Your Previous Feedback</h4>
+            {cachedFeedback.map((fb, i) => (
+              <div className="feedback-history-item" key={fb._id || i}>
+                <div className="feedback-history-top">
+                  <span className="feedback-history-title">{fb.title}</span>
+                  <span className="feedback-history-dept">{fb.department}</span>
+                </div>
+                <p>{fb.message}</p>
+                <span className="feedback-history-rating">⭐ {fb.rating}</span>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
