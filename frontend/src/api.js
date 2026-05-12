@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API = axios.create({ baseURL: "http://localhost:5000/api" });
+const API = axios.create({ baseURL: "https://my-website-l2zk.onrender.com/api" });
 
 // Attach token to every request if available
 API.interceptors.request.use((req) => {

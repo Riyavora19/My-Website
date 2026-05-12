@@ -1,3 +1,3 @@
 // src/api/constant.js
 
-export const BASE_URL = "http://localhost:5000/api";
+export const BASE_URL = "https://my-website-l2zk.onrender.com/api";
