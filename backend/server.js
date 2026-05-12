@@ -19,13 +19,27 @@ const allowedOrigins = [
   .filter(Boolean)
   .map((origin) => origin.replace(/\/$/, ""));
 
+const allowedOriginPatterns = [
+  /^https:\/\/universityfeedbacktrackingsystem(-git-[a-z0-9-]+)?\.vercel\.app$/,
+  /^https:\/\/universityfeedbacktrackingsystem-[a-z0-9-]+\.vercel\.app$/,
+];
+
+const isOriginAllowed = (origin) => {
+  if (!origin) return true;
+  const normalized = origin.replace(/\/$/, "");
+  return (
+    allowedOrigins.includes(normalized) ||
+    allowedOriginPatterns.some((pattern) => pattern.test(normalized))
+  );
+};
+
 const app = express();
 
 app.use(express.json());
 app.use(
   cors({
     origin: (origin, callback) => {
-      if (!origin || allowedOrigins.includes(origin)) {
+      if (isOriginAllowed(origin)) {
         return callback(null, true);
       }
       return callback(new Error("Not allowed by CORS"));
