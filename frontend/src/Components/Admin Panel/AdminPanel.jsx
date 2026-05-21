@@ -7,11 +7,8 @@ const AdminPanel = () => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    localStorage.removeItem("user");
-    localStorage.removeItem("my_issues");
-    localStorage.removeItem("my_feedback");
-    navigate("/login");
-    window.location.reload();
+    localStorage.removeItem("adminAuth");
+    navigate("/admin");
   };
   const [activeTab, setActiveTab] = useState("users");
   const [users, setUsers] = useState([]);
