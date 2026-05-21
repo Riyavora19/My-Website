@@ -23,8 +23,24 @@ const createUser = async (req, res) => {
   try {
     const { fullName, enrollmentNumber, email, password, department } = req.body;
 
+    // Required fields
     if (!fullName || !enrollmentNumber || !email || !password || !department) {
       return res.status(400).json({ message: "All fields are required" });
+    }
+
+    // Name — letters and spaces only
+    if (!/^[a-zA-Z\s]+$/.test(fullName)) {
+      return res.status(400).json({ message: "Name can only contain letters and spaces" });
+    }
+
+    // Email — valid format
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      return res.status(400).json({ message: "Enter a valid email address" });
+    }
+
+    // Password — min 6 characters
+    if (password.length < 6) {
+      return res.status(400).json({ message: "Password must be at least 6 characters" });
     }
 
     const userExists = await User.findOne({
