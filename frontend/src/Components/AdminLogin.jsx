@@ -2,25 +2,20 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./AdminLogin.css";
 
+const ADMIN_EMAIL = "admin@university.com";
+const ADMIN_PASSWORD = "admin123";
+
 const AdminLogin = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  // Hardcoded admin credentials (change these as needed)
-  const ADMIN_EMAIL = "admin@university.com";
-  const ADMIN_PASSWORD = "admin123";
-
   const handleLogin = () => {
-    if (!email || !password) {
-      setError("Please fill all fields");
-      return;
-    }
+    if (!email || !password) { setError("Please fill all fields"); return; }
 
     if (email === ADMIN_EMAIL && password === ADMIN_PASSWORD) {
-      localStorage.setItem("adminAuth", "true");
-      navigate("/admin/dashboard");
+      navigate("/admin");
     } else {
       setError("Invalid admin credentials");
     }

@@ -20,17 +20,10 @@ const ProtectedRoute = ({ children }) => {
   return children;
 };
 
-// Admin protected route — separate from student login
-const AdminRoute = ({ children }) => {
-  const isAdmin = localStorage.getItem("adminAuth") === "true";
-  if (!isAdmin) return <Navigate to="/admin-login" replace />;
-  return children;
-};
-
-// Hide student navbar on admin pages
+// Hide student navbar only on /admin page
 const ConditionalNavbar = () => {
   const location = useLocation();
-  if (location.pathname.startsWith("/admin")) return null;
+  if (location.pathname === "/admin") return null;
   return <Navbar />;
 };
 
@@ -45,6 +38,9 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/admin-login" element={<AdminLogin />} />
 
+        {/* Admin — no guard, accessible after admin-login */}
+        <Route path="/admin" element={<AdminPanel />} />
+
         {/* Student protected */}
         <Route path="/raise-issue"     element={<ProtectedRoute><RaiseIssue /></ProtectedRoute>} />
         <Route path="/track-status"    element={<ProtectedRoute><TrackStatus /></ProtectedRoute>} />
@@ -53,9 +49,6 @@ function App() {
         <Route path="/about"           element={<ProtectedRoute><About /></ProtectedRoute>} />
         <Route path="/contact"         element={<ProtectedRoute><Contact /></ProtectedRoute>} />
         <Route path="/profile"         element={<ProtectedRoute><Profile /></ProtectedRoute>} />
-
-        {/* Admin only — requires admin login */}
-        <Route path="/admin" element={<AdminRoute><AdminPanel /></AdminRoute>} />
 
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>

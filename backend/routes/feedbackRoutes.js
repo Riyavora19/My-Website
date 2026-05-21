@@ -1,10 +1,13 @@
 const express = require("express");
 const router = express.Router();
-const { createFeedback, getFeedbacks } = require("../controllers/feedbackController");
-const { protect, adminOnly } = require("../middleware/authMiddleware");
+const { createFeedback, getFeedbacks, deleteFeedback } = require("../controllers/feedbackController");
+const { protect } = require("../middleware/authMiddleware");
 
+// Student submitting needs token
 router.post("/", protect, createFeedback);
-router.get("/", protect, getFeedbacks);
-router.delete("/:id", protect, require("../controllers/feedbackController").deleteFeedback);
+
+// Read/delete — no token required (admin access)
+router.get("/", getFeedbacks);
+router.delete("/:id", deleteFeedback);
 
 module.exports = router;

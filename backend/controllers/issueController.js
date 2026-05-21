@@ -50,7 +50,7 @@ const updateIssueStatus = async (req, res) => {
     issue.status = status;
 
     if (status === "Resolved") {
-      issue.resolvedBy = req.user._id; // use JWT user, not body
+      issue.resolvedBy = req.user?._id || null;
       issue.resolvedAt = new Date();
     }
 
