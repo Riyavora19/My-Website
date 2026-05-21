@@ -13,21 +13,21 @@ import Profile from "./Components/Profile";
 import AdminPanel from "./Components/Admin Panel/AdminPanel";
 import AdminLogin from "./Components/AdminLogin";
 
-// Student route guard
+// Student protected route
 const ProtectedRoute = ({ children }) => {
   const user = JSON.parse(localStorage.getItem("user"));
   if (!user) return <Navigate to="/login" replace />;
   return children;
 };
 
-// Admin route guard — checks adminAuth, not user login
+// Admin protected route — separate from student login
 const AdminRoute = ({ children }) => {
   const isAdmin = localStorage.getItem("adminAuth") === "true";
-  if (!isAdmin) return <Navigate to="/admin" replace />;
+  if (!isAdmin) return <Navigate to="/admin-login" replace />;
   return children;
 };
 
-// Hide main navbar on all /admin routes
+// Hide student navbar on admin pages
 const ConditionalNavbar = () => {
   const location = useLocation();
   if (location.pathname.startsWith("/admin")) return null;
@@ -39,12 +39,13 @@ function App() {
     <BrowserRouter>
       <ConditionalNavbar />
       <Routes>
-        {/* Public student routes */}
+        {/* Public */}
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/admin-login" element={<AdminLogin />} />
 
-        {/* Protected student routes */}
+        {/* Student protected */}
         <Route path="/raise-issue"     element={<ProtectedRoute><RaiseIssue /></ProtectedRoute>} />
         <Route path="/track-status"    element={<ProtectedRoute><TrackStatus /></ProtectedRoute>} />
         <Route path="/submit-feedback" element={<ProtectedRoute><SubmitFeedback /></ProtectedRoute>} />
@@ -53,9 +54,8 @@ function App() {
         <Route path="/contact"         element={<ProtectedRoute><Contact /></ProtectedRoute>} />
         <Route path="/profile"         element={<ProtectedRoute><Profile /></ProtectedRoute>} />
 
-        {/* Admin routes — completely separate */}
-        <Route path="/admin" element={<AdminLogin />} />
-        <Route path="/admin/dashboard" element={<AdminRoute><AdminPanel /></AdminRoute>} />
+        {/* Admin only — requires admin login */}
+        <Route path="/admin" element={<AdminRoute><AdminPanel /></AdminRoute>} />
 
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>

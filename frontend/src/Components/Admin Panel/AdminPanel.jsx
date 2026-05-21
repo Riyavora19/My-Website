@@ -8,7 +8,8 @@ const AdminPanel = () => {
 
   const handleLogout = () => {
     localStorage.removeItem("adminAuth");
-    navigate("/admin");
+    navigate("/admin-login");
+    window.location.reload();
   };
   const [activeTab, setActiveTab] = useState("users");
   const [users, setUsers] = useState([]);
