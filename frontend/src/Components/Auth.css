@@ -132,3 +132,47 @@
     justify-content: center;
   }
 }
+
+/* ── Field-level errors ── */
+.field-error {
+  display: block;
+  font-size: 12px;
+  color: #ef4444;
+  margin-top: 4px;
+  font-weight: 500;
+}
+
+.input-error {
+  border-color: #ef4444 !important;
+  background: #fff5f5 !important;
+}
+
+.input-error:focus {
+  box-shadow: 0 0 0 3px rgba(239,68,68,0.1) !important;
+}
+
+/* ── Password strength bar ── */
+.password-strength {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.strength-bar {
+  height: 4px;
+  border-radius: 4px;
+  flex: 1;
+  transition: all 0.3s ease;
+}
+
+.strength-bar.weak   { background: #ef4444; width: 33%; }
+.strength-bar.medium { background: #f59e0b; width: 66%; }
+.strength-bar.strong { background: #10b981; width: 100%; }
+
+.strength-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: #64748b;
+  white-space: nowrap;
+}
